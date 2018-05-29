@@ -1,7 +1,7 @@
 # Created by https://www.gitignore.io/api/eclipse,java,jetbrains,netbeans
 
 ### Eclipse ###
-
+*./target/
 .metadata
 bin/
 tmp/
