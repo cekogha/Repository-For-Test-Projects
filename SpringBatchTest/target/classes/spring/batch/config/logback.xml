@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property resource="classpath:spring/batch/config/config.properties" />
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>${logback.console.pattern}</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="dailyRollingFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${logback.file.path}</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>${logback.file.name}</FileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>${logback.file.maxhistory}</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<Pattern>${logback.file.pattern}</Pattern>
+		</encoder>
+	</appender>
+	
+	<!-- For all classes logs from all packages -->
+	<logger name="fr.cekogha" additivity="false">
+		<level value="${logback.level}" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="dailyRollingFileAppender" />
+	</logger>
+	
+	<root>
+		<level value="${logback.level}" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="dailyRollingFileAppender" />
+	</root>
+</configuration>
