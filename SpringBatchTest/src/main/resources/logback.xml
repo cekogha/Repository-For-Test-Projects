@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<property resource="classpath:spring/batch/config/config.properties" />
+	<property resource="spring/batch/config/config.properties" />
 
 	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
